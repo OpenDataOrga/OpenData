@@ -4,7 +4,7 @@ var fs = require('fs')
 
 
 function parseBio(){
-    var workbook = XLSX.readFile('/Data/bio.xlsx')
+    var workbook = XLSX.readFile('Data/bio.xlsx')
     var cheptelName = workbook.SheetNames[4];
     var cheptelSheet = workbook.Sheets[cheptelName];
 
@@ -91,7 +91,7 @@ bio.forEach(x=> {
 
 var data = JSON.stringify(bio)
 
-fs.writeFile("/Data/bioScore.json", data, function(err) {
+fs.writeFile("Data/bioScore.json", data, function(err) {
     if (err) {
         console.log(err)
     }
