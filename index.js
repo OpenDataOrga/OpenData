@@ -18,8 +18,30 @@ app.get('/', function(req, response){
 })
 
 
+app.get('/bio', function(req,response){
+
+})
+
+
 
 app.listen(PORT, function(){
 	console.log('Hello :'+ PORT)
 })
+
+
+
+function searchOne(nomVille,file){
+    let openFile = fs.readFileSync('Data/bioScore.json')
+    let bioScore = JSON.parse(openFile)
+
+    let res = bioScore.forEach(x => {
+        if (x.nomCommune == nomVille){
+            return x.scoreBio
+        }
+    })
+
+}
+
+
+
 
