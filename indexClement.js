@@ -9,6 +9,7 @@
  
 
 
+
   const csv = require('csv-parser');
   var fs = require("fs");
 
@@ -139,7 +140,7 @@ function Mergeresult(values){
         NbLycee: arr[i].NbLycee,
         NbCollege:0,
         PtcSuccesbrevet:0,
-        Score:(arr[i].succesBac/arr[i].effectifBac)*100,
+        Score:((arr[i].succesBac/arr[i].effectifBac)*100)/2,
       });
     } 
   }
@@ -154,13 +155,13 @@ function Mergeresult(values){
         NbLycee: 0,
         PtcSuccesbrevet :(databrevet[i].succesBrevet/databrevet[i].effectifBrevet)*100,
         NbCollege:databrevet[i].NbCollege,
-        Score:(databrevet[i].succesBrevet/databrevet[i].effectifBrevet)*100,
+        Score:((databrevet[i].succesBrevet/databrevet[i].effectifBrevet)*100)/2,
       });
     } 
     else{
       map.get(s).NbCollege=databrevet[i].NbCollege;
       map.get(s).PtcSuccesbrevet=(databrevet[i].succesBrevet/databrevet[i].effectifBrevet)*100;
-      map.get(s).Score=(map.get(s).Score+((databrevet[i].succesBrevet/databrevet[i].effectifBrevet)*100))/2
+      map.get(s).Score=map.get(s).Score+(((databrevet[i].succesBrevet/databrevet[i].effectifBrevet)*100)/2)
     }
   }
   const res = Array.from(map.values())
