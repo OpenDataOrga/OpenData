@@ -47,7 +47,7 @@ function download(url, dest, cb) {
 };
 
 
-download('https://www.data.gouv.fr/fr/datasets/r/9db0425a-7de0-4197-88aa-b248be86e7f4', '../Data/bio.xlsx', (err) => {
+download('https://www.data.gouv.fr/fr/datasets/r/9db0425a-7de0-4197-88aa-b248be86e7f4', '/Data/bio.xlsx', (err) => {
     if (err) {
         console.error(err);
         return;
