@@ -3,7 +3,7 @@ var fs = require('fs')
 
 
 
-function searchOne(nomVille,file){
+function searchOneBio(nomVille,file){
     let openFile = fs.readFileSync(file)
     let bioScore = JSON.parse(openFile)
 
@@ -18,4 +18,42 @@ function searchOne(nomVille,file){
 
 }
 
-console.log(searchOne('ARANDAS','Data/bioScore.json'))
+console.log(searchOneBio('ARANDAS','Data/bioScore.json'))
+
+
+function mergeJson(){
+    let openFranceJson = fs.readFileSync('Data/france.json')
+    let franceJson = JSON.parse(openFranceJson)
+
+    let res = []
+    franceJson.forEach(x=> {
+        let tmp = new Object()
+        tmp.codeCommune = x.Code_commune_INSEE
+        tmp.nomCommune  = x.Nom_commune
+        res.push(tmp)
+    })
+
+    return res
+
+}
+
+
+var dataTest = mergeJson()
+
+
+console.log(dataTest)
+
+console.log(typeof(dataTest))
+
+console.log(typeof(dataTest[0]))
+
+
+var data = JSON.stringify(dataTest)
+
+
+fs.writeFile("Data/test.json", data, function(err) {
+    if (err) {
+        console.log(err)
+    }
+})
+
