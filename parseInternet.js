@@ -38,15 +38,15 @@ for(var i = 1; i < debitSheet_json.length; i++) {
     /*console.log(typeof first_round);*/
 
     debit_json.push({
-        'Code INSEE' : item["Données utilisées dans les formules. Ne pas effacer"],
+        'Code_INSEE' : item["Données utilisées dans les formules. Ne pas effacer"],
         'Commune' : item["__EMPTY"],
-        '0,5 Mbits/s' : first_round,
-        '3 Mbits/s' : second_round,
-        '8 Mbits/s' : third_round,
-        '30 Mbits/s' : fourth_round,
-        '100 Mbits/s' : fifth_round,
-        '1 Gbits/s' : sixth_round,
-        'Score Internet' : Number((first_round*0.05 + second_round*0.15 + third_round*0.2 +
+        '05_Mbitss' : first_round,
+        '3_Mbitss' : second_round,
+        '8_Mbitss' : third_round,
+        '30_Mbitss' : fourth_round,
+        '100_Mbitss' : fifth_round,
+        '1_Gbitss' : sixth_round,
+        'Score_Internet' : Number((first_round*0.05 + second_round*0.15 + third_round*0.2 +
                             fourth_round*0.25 + fifth_round*0.25 + sixth_round*0.1).toFixed(round))
     });
   }
