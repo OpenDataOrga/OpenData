@@ -3,13 +3,13 @@
     "info": {
       "version": "1.0.0", //version of the OpenAPI Specification
       "title": "Open Data",
-      "description": "API",
+      "description": "API pour obtenir des informations sur sa commune",
       "license": {
         "name": "MIT",
         "url": "https://opensource.org/licenses/MIT"
       }
     },
-    "host": "localhost:8000",
+    "host": "localhost:3000",
     "basePath": "/",
     "tags": [
       {
@@ -18,6 +18,107 @@
       }
     ],
     "schemes": ["http"],
-    "consumes": ["application/json"],
-    "produces": ["application/json"]
-  }
+    "consumes": ["data.csv"],
+    "produces": ["data.csv"],
+
+
+    "paths": {
+      "/ResBrevetBac": {
+        "get": {
+          "tags": ["Download the data"],
+          "summary": "Get the result of bac and brevet",
+          "responses": {
+            "200": {
+              "description": "Extract csv file to a JSon file and return it",
+              "schema": {
+                "$ref": "#/definitions/CSV"
+              }
+            }
+          }
+        }
+      },
+      
+
+      "/dlInternet": {
+        "get": {
+          "tags": ["Download the data"],
+          "summary": "Get the result of connexion internet",
+          "responses": {
+            "200": {
+              "description": "Extract csv file to a JSon file and return it",
+              "schema": {
+                "$ref": "#/definitions/API"
+              }
+            }
+          }
+        }
+    },
+
+    "/dlBio": {
+        "get": {
+          "tags": ["Download the data"],
+          "summary": "Get the quality of biology",
+          "responses": {
+            "200": {
+              "description": "Extract xlsx file to a JSon file and return it",
+              "schema": {
+                "$ref": "#/definitions/Scrap"
+              }
+            }
+          }
+        }
+    },
+
+    "/Resgaz": {
+      "get": {
+        "tags": ["Download the data"],
+        "summary": "Get the quality of gaz",
+        "responses": {
+          "200": {
+            "description": "Extract csv file to a JSon file and return it",
+            "schema": {
+              "$ref": "#/definitions/Scrap"
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "definitions": {
+    "CSV": {
+      "required": ["id", "Commune", "Brevet","Bac","internet","bio","gaz"],
+      "properties": {
+        "id": {
+          "type": "integer",
+           
+           "exemple": 500,
+          "uniqueItems": true
+        },
+        "Commune": {
+          "type": "string"
+        },
+        "Brevet": {
+          "type": "number"
+        },
+        "Bac": {
+          "type": "number"
+        },
+        "internet": {
+          "type": "number"
+        },
+        "bio": {
+          "type": "number"
+        },
+        "gaz": {
+          "type": "number"
+        }        
+      }
+    }
+  
+
+}
+}
+
+ 
+  
