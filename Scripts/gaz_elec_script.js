@@ -2,19 +2,16 @@ fs = require("fs");
 toArray = require("to-array");
 const express= require('express');
 const app = express();
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 3000;
 const httprequest = require('request');
 
-// swagger
-app.use(express.json())
-const swaggerUi = require(‘swagger-ui-express’),
-swaggerDocument = require(‘./swagger.json’);
 
-app.use(
-  '/api-docs',
-  swaggerUi.serve, 
-  swaggerUi.setup(swaggerDocument)
-);
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger.json');
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+
 
 let url = "https://www.data.gouv.fr/fr/datasets/r/6fa2126d-4c46-40f5-8a52-d5f3eae92dce";
         let options = {json: true};

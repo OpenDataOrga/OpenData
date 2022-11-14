@@ -1,7 +1,7 @@
 {
     "swagger": "2.0",
     "info": {
-      "version": "1.0.0", //version of the OpenAPI Specification
+      "version": "1.0.0", 
       "title": "Open Data",
       "description": "API pour obtenir des informations sur sa commune",
       "license": {
@@ -19,9 +19,8 @@
     ],
     "schemes": ["http"],
     "consumes": ["data.csv"],
-    "produces": ["data.csv"],
-
-
+    "produces": ["datajson.json"],
+   
     "paths": {
       "/ResBrevetBac": {
         "get": {
@@ -29,7 +28,7 @@
           "summary": "Get the result of bac and brevet",
           "responses": {
             "200": {
-              "description": "Extract csv file to a JSon file and return it",
+              "description": "Transform csv file to a JSon file and return it",
               "schema": {
                 "$ref": "#/definitions/CSV"
               }
@@ -37,15 +36,13 @@
           }
         }
       },
-      
-
       "/dlInternet": {
         "get": {
           "tags": ["Download the data"],
           "summary": "Get the result of connexion internet",
           "responses": {
             "200": {
-              "description": "Extract csv file to a JSon file and return it",
+              "description": "Get the data from an api and return a JSon file",
               "schema": {
                 "$ref": "#/definitions/API"
               }
@@ -60,65 +57,82 @@
           "summary": "Get the quality of biology",
           "responses": {
             "200": {
-              "description": "Extract xlsx file to a JSon file and return it",
+              "description": "Create a JSon file after scrapping a Wikipedia page",
               "schema": {
                 "$ref": "#/definitions/Scrap"
               }
             }
           }
         }
-    },
-
+      },
     "/Resgaz": {
-      "get": {
-        "tags": ["Download the data"],
-        "summary": "Get the quality of gaz",
-        "responses": {
-          "200": {
-            "description": "Extract csv file to a JSon file and return it",
-            "schema": {
-              "$ref": "#/definitions/Scrap"
+        "get": {
+          "tags": ["Download the data"],
+          "summary": "Get the quality of gaz",
+          "responses": {
+            "200": {
+              "description": "Extract csv file to a JSon file and return it",
+              "schema": {
+                "$ref": "#/definitions/Scrap"
+              }
             }
           }
         }
       }
-    }
-  },
 
-  "definitions": {
-    "CSV": {
-      "required": ["id", "Commune", "Brevet","Bac","internet","bio","gaz"],
-      "properties": {
-        "id": {
-          "type": "integer",
-           
-           "exemple": 500,
-          "uniqueItems": true
-        },
-        "Commune": {
-          "type": "string"
-        },
-        "Brevet": {
-          "type": "number"
-        },
-        "Bac": {
-          "type": "number"
-        },
-        "internet": {
-          "type": "number"
-        },
-        "bio": {
-          "type": "number"
-        },
-        "gaz": {
-          "type": "number"
-        }        
+
+    },
+
+
+      
+      "definitions": {
+        "CSV": {
+          "required": ["id", "Commune", "Brevet","Bac","internet","bio","gaz"],
+          "properties": {
+            "id": {
+              "type": "integer",
+               
+               "exemple": 500,
+              "uniqueItems": true
+            },
+            "Commune": {
+              "type": "string"
+            },
+            "Brevet": {
+              "type": "number"
+            },
+            "Bac": {
+              "type": "number"
+            },
+            "internet": {
+              "type": "number"
+            },
+            "bio": {
+              "type": "number"
+            },
+            "gaz": {
+              "type": "number"
+            } 
+
+          }
+        }
+        
+
+
+
       }
-    }
+        
+      
+    
+}
+   
+  
+  
+      
+    
   
 
-}
-}
 
- 
+
+
   
