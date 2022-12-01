@@ -10,7 +10,7 @@
       }
     },
     "host": "localhost:3000",
-    "basePath": "/",
+    "basePath": "http://localhost:3000/testForm.html",
     "tags": [
       {
         "name": "Users",
@@ -57,7 +57,7 @@
           "summary": "Get the quality of biology",
           "responses": {
             "200": {
-              "description": "Create a JSon file after scrapping a Wikipedia page",
+              "description": "Get the data from an api and return a JSon file",
               "schema": {
                 "$ref": "#/definitions/Scrap"
               }
